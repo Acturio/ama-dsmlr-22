@@ -134,4 +134,52 @@ plot1 <- ggplot(plot.data, aes(x=X1, y=prob, color=group)) +
 rlogit <- plotly::ggplotly(plot1)
 htmlwidgets::saveWidget(rlogit, "rlogit.html")
 
+#########################
+
+
+library(kableExtra)
+
+prop <-  c(691, 639, 969, 955, 508)
+total <- sum(prop)
+props <- data.frame(x = prop, x_prop = prop/total) 
+feature_eng1 <- props %>%
+  kbl() %>%
+  kable_classic_2(full_width = F)
+htmlwidgets::saveWidget(feature_eng1, "feature_eng1.html")
+
+
+
+
+edades <- data.frame(
+ 'Edad' = c(7, 78, 17, 25, NA), 
+ 'Grupo' = c('Niños', 'Adultos mayores', 'Adolescentes', 'Adultos', NA))
+
+feature_eng2 <- edades %>% 
+ kbl() %>%
+ kable_classic_2(full_width = F)
+htmlwidgets::saveWidget(feature_eng2, "feature_eng2.html")
+
+
+
+
+edades <- data.frame(
+ 'Edad' = c(7, 78, NA, 25, NA), 
+ 'Grupo' = c('Niños', 'Adultos mayores', NA, 'Adultos', NA))
+
+feature_eng2 <- edades %>% 
+ kbl() %>%
+ kable_classic_2(full_width = F)
+htmlwidgets::saveWidget(feature_eng2, "feature_eng2.html")
+
+
+
+
+
+
+
+
+
+
+
+
 
