@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>presentation.knit</title>
+    <meta charset="utf-8" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <script src="libs/js-cookie/js.cookie.js"></script>
+    <script src="libs/peerjs/peerjs.min.js"></script>
+    <script src="libs/tiny.toast/toast.min.js"></script>
+    <link href="libs/xaringanExtra-broadcast/broadcast.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-broadcast/broadcast.js"></script>
+    <link href="libs/panelset/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset/panelset.js"></script>
+    <link rel="stylesheet" href="custom.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+
+
+layout: true
+background-size: contain
+
+<style>.panelset{--panel-tab-foreground: black;--panel-tab-active-foreground: #061b94;--panel-tab-hover-foreground: #000000;--panel-tab-inactive-opacity: 0.5;}</style>
+---
+
+background-image: url(img/congreso_3.png)
+class: inverse, center, middle
+
+.high-title[Ciencia de Datos y Machine Learning con R]
+
+.size_text_18px[Act. Arturo Bringas]
+
+---
+
+background-image: url(img/congreso_2.png)
+class: inverse, center, middle
+
+.high-title[¿Qué está pasando en el mundo del análisis de los datos?]
+
+---
+
+background-image: url(img/01_complexity_confusion.png)
+class: inverse, center, middle
+
+---
+
+background-image: url(img/congreso_1.png)
+class: inverse, center
+
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+
+.panelset[
+
+.panel[.panel-name[Statistics]
+
+.pull-left[
+
+.body[
+Analiza e interpreta datos a través de una población muestral generando estadística descriptiva y estadística inferencial.
+
+&lt;br /&gt;
+
+* **Estadística descriptiva:** Describe distribuciones, análisis exploratorio, correlaciones, outliers, etc.
+
+&lt;br /&gt;
+
+* **Estadística inferencial:** Analiza estimaciones puntuales, intervalos de confianza o hipótesis para una población.
+
+]
+
+]
+
+.pull-right[
+
+&lt;img src="img/02_muestra.jpg" width="545px" height="265px" /&gt;
+
+]
+
+]
+
+.panel[.panel-name[BI]
+.pull-left[
+&lt;img src="img/03_bi.png" width="545px" height="265px" /&gt;
+]
+.pull-right[
+
+.body[
+Aprovecha el software y servicios para transformar datos en **conocimientos prácticos que informan las decisiones estratégicas de una organización**. 
+
+&lt;br /&gt;
+
+Acceden y analiza datos para **transformar hallazgos analíticos** en informes, resúmenes, tableros, gráficos, tablas, KPI’s y mapas para proporcionar inteligencia detallada sobre el estado del negocio.
+
+Está enfocada en *analizar la historia pasada*.
+]
+
+]
+]
+
+.panel[.panel-name[Big Data]
+.pull-left[
+.body[
+Grandes conjuntos de información que crecen a un ritmo cada vez mayor. Abarca los 3 "V":
+
+* **V**olumen de información
+* **V**elocidad a la que se crea y recopila
+* **V**ariedad de datos que se cubren. 
+
+Es común que se confunda los conceptos de **Big Data y Big Compute.** 
+
+BD se refiere al procesamiento de conjuntos voluminosos y BC a herramientas y algoritmos que usan gran cantidad de recursos computacionales para resolver problemas complejos.
+]
+]
+
+.pull-right[
+&lt;img src="img/04_bigdata.jpg" width="545px" height="265px" /&gt;
+]
+]
+
+.panel[.panel-name[ML]
+.pull-left[
+&lt;img src="img/05_machine_learning_tree.png" width="600px" height="270px" /&gt;
+]
+.pull-right[
+.body[
+Los algoritmos de Machine Learning se dividen en categorías:
+
+**Supervisado:** Aprendizaje basado en etiquetas con respuestas correctas a partir de las cuales el algoritmo asocia patrones comunes en datsos.
+
+**No supervisado:** Aprendizaje sin supervisión ni guía. Esto significa descubrir ¿qué es qué? por nosotros mismos.
+
+**Por refuerzo:** Aprende a partir de experiencia propia. Esto es, que sea capaz de tomar la mejor decisión de acuerdo a un proceso de prueba y error en el que se recompensan las decisiones correctas. [Ejemplo](https://www.youtube.com/watch?v=qv6UVOQ0F44)
+]
+]
+]
+
+.panel[.panel-name[DL]
+.pull-left[
+.body[
+Ocupa de los algoritmos inspirados en la estructura y función del cerebro llamados **redes neuronales artificiales**.
+
+&lt;img src="img/06_dl.png" width="545px" height="100px" /&gt;
+
+El modelo aprende a **clasificar a partir de imágenes, video, texto o sonido**. Los modelos de aprendizaje profundo pueden lograr una precisión de vanguardia. Los modelos se entrenan mediante el uso de un gran conjunto de datos y arquitecturas de redes neuronales que contienen muchas capas.
+]
+]
+.pull-right[
+&lt;img src="img/07_reconocimiento.png" width="545px" height="265px" /&gt;
+]
+]
+
+.panel[.panel-name[Data Science]
+&lt;img src="img/08_data_science_skillset.jpg" width="600px" height="300px" /&gt;
+]
+
+]
+
+---
+
+background-image: url(img/congreso_1.png)
+class: inverse, center
+
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+
+.panelset[
+
+.panel[.panel-name[Datos y Etiquetas]
+&lt;img src="img/09_1_etiquetas.png" width="600px" height="300px" /&gt;
+]
+
+.panel[.panel-name[Relevancia y Suficiencia]
+&lt;img src="img/09_2_relevancia_suficiencia.png" width="600px" height="300px" /&gt;
+]
+
+.panel[.panel-name[Software]
+&lt;img src="img/09_3_lenguajes.png" width="600px" height="300px" /&gt;
+]
+
+]
+
+---
+
+background-image: url(img/congreso_1.png)
+class: inverse, center
+
+&lt;br /&gt;
+&lt;br /&gt;
+
+.size_text_26px[Aplicaciones de Ciencia de Datos]
+
+.pull-left[
+
+.body[
+**Aplicaciones centradas en clientes**
+
+* Recomendaciones de productos
+* Upselling &amp; Cross-selling
+* Reducir tasas de cancelación
+* Análisis de sentimientos
+* Personalización de productos o servicios
+]
+
+&lt;img src="img/10_customer.png" width="200px" height="150px" /&gt;
+]
+
+.pull-right[
+
+&lt;img src="img/11_location.png" width="200px" height="180px" /&gt;
+
+.body[
+**Optimización de problemas**
+
+* Optimización de precios
+* Ubicación de nuevas sucursales
+* Maximización de ganancias mediante producción de materias primas
+* Construcción de portafolios de inversión
+]
+]
+
+---
+
+background-image: url(img/congreso_1.png)
+class: inverse, center
+
+&lt;br /&gt;
+&lt;br /&gt;
+
+.size_text_26px[Aplicaciones de Ciencia de Datos]
+
+.pull-left[
+
+&lt;img src="img/12_forecasting.jpeg" width="200px" height="150px" /&gt;
+
+
+.body[
+**Predicción de demanda**
+
+* Número futuro de clientes
+* Número esperado de viajes
+* Número por virus (demanda médica/ medicamentos/ etc)
+* Predicción de uso de recursos 
+]
+
+]
+
+.pull-right[
+
+.body[
+**Análisis de detección de fraude**
+
+* Detección de robo de identidad
+* Detección de transacciones ilícitas
+* Detección de servicios fraudulentos
+* Detección de zonas geográficas con actividades ilícitas
+
+&lt;img src="img/13_fraud.jpeg" width="320px" height="160px" /&gt;
+
+]
+]
+
+---
+
+background-image: url(img/congreso_1.png)
+class: inverse, center
+
+&lt;br /&gt;
+&lt;br /&gt;
+
+.size_text_26px[ML - Aprendizaje Supervisado]
+
+.pull-left[
+
+.body[
+Se realiza la **detección de patrones** para aprender las relaciones existentes entre las variables explicativas y la respuesta a predecir. Posteriormente, dependiendo del tipo de respuesta se realiza la clasificación o regresión predictiva
+]
+
+&lt;img src="img/14_bot_supervisado.png" width="300px" height="230px" /&gt;
+]
+.pull-right[
+&lt;img src="img/15_regresion_clasificacion.png" width="370px" height="225px" /&gt;
+
+.body[
+Existen algoritmos que operan con cada uno de los tipos de respuesta y algunos de ellos logran adaptarse al tipo de respuesta indicado.
+]
+]
+
+---
+
+background-image: url(img/congreso_1.png)
+class: inverse, center
+
+&lt;br /&gt;
+&lt;br /&gt;
+
+.size_text_26px[ML - Aprendizaje NO Supervisado]
+
+.pull-left[
+.body[
+A partir de **similitudes entre los elementos** en observación, se realizan agrupaciones que pueden ayudar a:
+
+* Segmentar clientes
+* Reducir dimensión de grandes datos
+* Realizar sistemas de recomendación
+* Etc.
+]
+&lt;img src="img/17_bot_no_supervisado.png" width="300px" height="215px" /&gt;
+]
+
+.pull-right[
+&lt;img src="img/16_recommendation.png" width="300px" height="200px" /&gt;
+.body[
+A menudo se combinan los algoritmos de aprendizaje de máquina supervisado y no supervisado para crear sistemas predictivos que ayuden a **mejorar la precisión**
+]
+
+]
+---
+
+background-image: url(img/congreso_2.png)
+class: inverse, center, middle
+
+.high-title[Manos a la obra]
+&lt;br /&gt;
+&lt;br /&gt;
+.high-title[¿Cómo iniciamos?]
+
+---
+
+background-image: url(img/congreso_1.png)
+class: inverse, center
+
+&lt;br /&gt;
+&lt;br /&gt;
+
+.size_text_26px[División de datos]
+
+.pull-left[
+
+.body[
+Para realizar el entrenamiento y prueba del mejor modelo posible, los datos se segmentan en 3 conjuntos.
+
+* **Training:** Conjunto a través del cual se **construye el modelo**. Se calculan parámetros que usará el modelo para hacer predicciones.
+
+* **Validation:** Se usa para **validar las decisiones** de configuración del modelo. Se seleccionan hiper-parámetros que producen mejor resultado predictivo sobre este conjunto de datos.
+
+* **Testing:** Prueba predictiva final que permite **conocer el futuro poder predictivo** similar al que se obtendrá cuando el modelo se encuentre en producción.
+]
+]
+
+.pull-right[
+&lt;img src="img/18_conjunto_validacion.png" width="420px" height="290px" /&gt;
+]
+
+---
+
+background-image: url(img/congreso_1.png)
+class: inverse, center
+
+&lt;br /&gt;
+&lt;br /&gt;
+
+.size_text_26px[División de datos - KFCV]
+
+.pull-left[
+.body[
+Una estrategia que permite seleccionar ágilmente los mejores hiper-parámetros de configuración es **probar con distintas opciones en distintas divisiones de datos** y elegir el que permita obtener mejores resultados. 
+]
+&lt;img src="img/18_2_kfcv.jpg" width="350px" height="230px" /&gt;
+
+]
+
+.pull-right[
+&lt;img src="img/18_1_cross_validation.png" width="370px" height="230px" /&gt;
+.body[
+A partir del cálculo del poder predictivo de cada uno de los folds creados, se calcula el error promedio de cada configuración y finalmente se elige el modelo que tenga **mejor poder predictivo promedio**.
+]
+]
+
+---
+
+background-image: url(img/congreso_1.png)
+class: inverse, center
+
+&lt;br /&gt;
+&lt;br /&gt;
+
+.size_text_26px[Ingeniería de variables]
+
+.body[
+La ingeniería de datos abarca actividades que **reformatean los valores de los predictores para que se puedan utilizar de manera eficaz para nuestro modelo**. Esto incluye transformaciones y codificaciones de los datos para representar mejor sus características importantes. Ejemplos:
+]
+
+.pull-left[
+.title-table[Transformación numérica]
+
+<iframe src="feature_eng1.html" width="400px" height="200px" scrolling="no" seamless="seamless" frameBorder="0"></iframe>
+]
+
+.pull-right[
+.title-table[Transformación categórica]
+<iframe src="feature_eng2.html" width="400px" height="200px" scrolling="no" seamless="seamless" frameBorder="0"></iframe>
+]
+
+
+---
+
+background-image: url(img/congreso_1.png)
+class: inverse, center
+
+&lt;br /&gt;
+&lt;br /&gt;
+
+.size_text_26px[Respuesta Numérica - Regresión Lineal]
+
+.body[
+**Regresión Lineal Simple:** Realiza el ajuste de una recta permita conocer la relación existente entre una única variable explicativa **X** para predecir una respuesta numérica **Y**. La predicción se realiza a través de:
+
+`$$\hat{Y} = \hat{\beta}_0 + \hat{\beta}_1X_1 + \epsilon \approx b + mx$$`
+]
+
+
+<iframe src="rls.html" width="600px" height="260px" scrolling="no" seamless="seamless" frameBorder="0"></iframe>
+
+---
+
+background-image: url(img/congreso_1.png)
+class: inverse, center
+
+&lt;br /&gt;
+&lt;br /&gt;
+
+.size_text_26px[Respuesta Numérica - Regresión Lineal]
+
+.body[
+**Regresión Lineal Múltiple:** Realiza el ajuste de un hiper-plano que permita conocer la relación existente entre múltiples variables explicativas `\(\{X_1, X_2, ... , X_p \}\)` para predecir una respuesta numérica **Y**. La predicción se realiza a través de:
+$$\hat{Y} = \hat{\beta}_0 + \hat{\beta}_1X_1 + \hat{\beta}_2X_2 + ... + \hat{\beta}_pX_p + \epsilon $$
+]
+
+<iframe src="iris_plot.html" width="600px" height="287px" scrolling="no" seamless="seamless" frameBorder="0"></iframe>
+
+---
+
+background-image: url(img/congreso_1.png)
+class: inverse, center
+
+&lt;br /&gt;
+&lt;br /&gt;
+
+.size_text_26px[Respuesta Numérica - Regresión KNN]
+
+.body[
+**K Vecinos más Cercanos:** Realiza comparaciones de cada elemento por predecir contra todas las observaciones conocidas para posteriormente estimar la predicción de un nuevo elemento **a través del promedio de los _K_ vecinos más parecidos.** La cantidad de vecinos cercanos determinará la flexibilidad del modelo. 
+
+* A mayor número de vecinos, el modelo será más rigido y tendrá más sesgo y menos varianza.  
+* A menor número de vecinos, el modelo será más flexible, logrando mayor varianza y menos sesgo.
+]
+
+&lt;img src="img/18_1_regression_knn1.png" width="210px" height="180px" /&gt;&lt;img src="img/18_2_regression_knn2.png" width="210px" height="180px" /&gt;&lt;img src="img/18_3_regression_knn3.png" width="210px" height="180px" /&gt;
+
+.body[
+No existe una *K* mágica, la **elección óptima de *"K"* se determina mediante pruebas iterativas de ensayo y error**, de forma que se elige la que ajuste mejor a los datos.
+]
+
+---
+
+background-image: url(img/congreso_1.png)
+class: inverse, center
+
+&lt;br /&gt;
+&lt;br /&gt;
+
+.size_text_26px[Respuesta Numérica - Regresión KNN]
+
+.body[
+**K Vecinos más Cercanos:** Realiza comparaciones de cada elemento por predecir contra todas las observaciones conocidas para posteriormente estimar la predicción de un nuevo elemento **a través del promedio de los _K_ vecinos más parecidos.** La cantidad de vecinos cercanos determinará la flexibilidad del modelo. 
+
+* A mayor número de vecinos, el modelo será más rigido y tendrá más sesgo y menos varianza.  
+* A menor número de vecinos, el modelo será más flexible, logrando mayor varianza y menos sesgo.
+]
+
+&lt;img src="img/19_1_regression_knn_k1.png" width="210px" height="180px" /&gt;&lt;img src="img/19_2_regression_knn_k2.png" width="210px" height="180px" /&gt;
+
+.body[
+No existe una *K* mágica, la **elección óptima de *"K"* se determina mediante pruebas iterativas de ensayo y error**, de forma que se elige la que ajuste mejor a los datos.
+]
+
+---
+
+background-image: url(img/congreso_1.png)
+class: inverse, center
+
+&lt;br /&gt;
+&lt;br /&gt;
+
+.size_text_26px[Tree Decision]
+
+.pull-left[
+.body[
+**Árbol de decisión:** Es un clasificador estructurado de manera jerárquica (árbol), en donde:
+
+* Los nodos internos representan las características de un conjunto de datos
+* Las ramas representan las reglas de decisión 
+* Cada nodo hoja representa el resultado. 
+]
+
+&lt;img src="img/19_1_arboles.png" width="260px" height="190px" /&gt;
+
+]
+
+.pull-right[
+&lt;img src="img/19_2_arboles.png" width="320px" height="220px" /&gt;
+
+.body[
+La idea básica de los árboles es **buscar puntos de corte** en las variables de entrada para hacer predicciones, ir dividiendo la muestra y encontrar cortes para **refinar las predicciones.**
+]
+]
+
+---
+
+background-image: url(img/congreso_1.png)
+class: inverse, center
+
+&lt;br /&gt;
+&lt;br /&gt;
+
+.size_text_26px[Respuesta Numérica - Tree Decision]
+
+.body[
+En el caso de un **árbol de regresión**, los cortes se realizan de manera que disminuya la varianza al interior de cada uno de los grupos formados a partir de la rama de decisión.
+]
+
+&lt;img src="img/20_1_arbol_reg_diagram.png" width="300px" height="200px" /&gt;&lt;img src="img/20_3_arbol_reg_ejemplo.png" width="300px" height="200px" /&gt;
+
+.body[
+Posteriormente, para realizar predicciones de nuevas observaciones se calcula **el promedio de la variable de respuesta** de los elementos observados contenidos en el grupo para lograr estimaciones de nuevas observaciones que sean clasificados en el nodo hoja creado
+]
+
+---
+
+background-image: url(img/congreso_1.png)
+class: inverse, center
+
+&lt;br /&gt;
+&lt;br /&gt;
+
+.size_text_26px[Respuesta Numérica - Random Forest]
+
+.body[
+El proceso de toma de decisión jerárquica puede mejorarse al considerar el **promedio del resultado** de miles de árboles creados a partir de **muestras bootstrap**, las cuales crean variación en los datos para detectar los patrones consistentes y desechar aquellos producidos por ruido o datos atípicos.
+]
+&lt;img src="img/21_2_bagging.png" width="280px" height="235px" /&gt;
+&lt;img src="img/21_1_rforest_mean.png" width="280px" height="220px" /&gt;
+
+.body[
+La **agregación** del resultado de múltiples modelos puede en muchas ocasiones **mejorar el desempeño final**, sin embargo, esta mejora **se paga con recursos computacionales**
+]
+
+---
+
+background-image: url(img/congreso_1.png)
+class: inverse, center
+
+&lt;br /&gt;
+&lt;br /&gt;
+
+.size_text_26px[Respuesta Categórica - Regresión Logística]
+
+.body[
+**Modelo de clasificación**
+
+A partir de una o más variables explicativas, se estima la **probabilidad de pertenecer a la categoría _positiva_ de una variable de respuesta categórica**. Posteriormente, se determina el umbral de probabilidad a partir del cual se clasifica a una observación como positiva o negativa.
+
+`$$P[Y = 1 | X] = \frac{e^{\hat{\beta}_0 + \hat{\beta}_1X_1 + ... + \hat{\beta}_pX_p}}{1 + e^{\hat{\beta}_0 + \hat{\beta}_1X_1 + ... + \hat{\beta}_pX_p}}$$`
+]
+
+<iframe src="rlogit.html" width="600px" height="217px" scrolling="no" seamless="seamless" frameBorder="0"></iframe>
+
+---
+
+background-image: url(img/congreso_1.png)
+class: inverse, center
+
+&lt;br /&gt;
+&lt;br /&gt;
+
+.size_text_26px[Respuesta Categórica - Clasificación KNN]
+
+.body[
+**K Vecinos más Cercanos:** Realiza comparaciones de cada elemento por predecir contra todas las observaciones conocidas para posteriormente estimar la predicción de un nuevo elemento **a través de la moda de los _K_ vecinos más parecidos.** La cantidad de vecinos cercanos determinará la flexibilidad del modelo. 
+
+* A mayor número de vecinos, el modelo será más rigido y tendrá más sesgo y menos varianza.  
+* A menor número de vecinos, el modelo será más flexible, logrando mayor varianza y menos sesgo.
+]
+
+&lt;img src="img/20_1_classification_knn.png" width="210px" height="180px" /&gt;&lt;img src="img/20_2_classification_knn.png" width="210px" height="180px" /&gt;&lt;img src="img/20_3_classification_knn.png" width="210px" height="180px" /&gt;
+
+.body[
+No existe una *K* mágica, la **elección óptima de *"K"* se determina mediante pruebas iterativas de ensayo y error**, de forma que se elige la que ajuste mejor a los datos.
+]
+
+---
+
+background-image: url(img/congreso_1.png)
+class: inverse, center
+
+&lt;br /&gt;
+&lt;br /&gt;
+
+.size_text_26px[Respuesta Categórica - Clasificación KNN]
+
+.body[
+**K Vecinos más Cercanos:** Realiza comparaciones de cada elemento por predecir contra todas las observaciones conocidas para posteriormente estimar la predicción de un nuevo elemento **a través de la moda de los _K_ vecinos más parecidos.** La cantidad de vecinos cercanos determinará la flexibilidad del modelo. 
+
+* A mayor número de vecinos, el modelo será más rigido y tendrá más sesgo y menos varianza.  
+* A menor número de vecinos, el modelo será más flexible, logrando mayor varianza y menos sesgo.
+]
+
+&lt;img src="img/21_1_classification_knn_k1.png" width="250px" height="180px" /&gt;&lt;img src="img/21_2_classification_knn_k2.png" width="250px" height="180px" /&gt;
+
+.body[
+No existe una *K* mágica, la **elección óptima de *"K"* se determina mediante pruebas iterativas de ensayo y error**, de forma que se elige la que ajuste mejor a los datos.
+]
+
+---
+
+background-image: url(img/congreso_1.png)
+class: inverse, center
+
+&lt;br /&gt;
+&lt;br /&gt;
+
+.size_text_26px[Respuesta Categórica - Tree Decision]
+
+.body[
+En el caso de un **árbol de clasificación**, los cortes se realizan de manera que disminuya la impureza de categorías al interior de cada uno de los grupos formados a partir de la rama de decisión.
+]
+
+&lt;img src="img/22_1_arbol_class_diagram.png" width="300px" height="200px" /&gt;&lt;img src="img/22_2_arbol_class_graph.png" width="300px" height="200px" /&gt;
+
+.body[
+Posteriormente, para realizar predicciones de nuevas observaciones se calcula **la moda de la variable de respuesta** de los elementos observados contenidos en el grupo para lograr estimaciones de nuevas observaciones que sean clasificados en el nodo hoja creado
+]
+
+---
+
+background-image: url(img/congreso_1.png)
+class: inverse, center
+
+&lt;br /&gt;
+&lt;br /&gt;
+
+.size_text_26px[Respuesta Categórica - Random Forest]
+
+.body[
+El proceso de toma de decisión jerárquica puede mejorarse al considerar el **promedio del resultado** por *votación de la mayoría* de miles de árboles creados a partir de **muestras bootstrap**, las cuales crean variación en los datos para detectar los patrones consistentes y desechar aquellos producidos por ruido o datos atípicos.
+]
+&lt;img src="img/23_1_randomforest_ejemplo.jpg" width="390px" height="230px" /&gt;
+&lt;img src="img/23_2_randomforest.png" width="340px" height="230px" /&gt;
+
+.body[
+La **agregación** del resultado de múltiples modelos puede en muchas ocasiones **mejorar el desempeño final**, sin embargo, esta mejora **se paga con recursos computacionales.**
+]
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
