@@ -68,4 +68,8 @@ center {
   margin-left: auto;
 }
 
-
+.title-table{
+  text-align: center;
+  color: black;
+  font-size: 18px;
+}

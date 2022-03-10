@@ -447,7 +447,45 @@ class: inverse, center
 <br />
 <br />
 
-.size_text_26px[Ingeniaría de variables]
+.size_text_26px[Ingeniería de variables]
+
+.body[
+La ingeniería de datos abarca actividades que **reformatean los valores de los predictores para que se puedan utilizar de manera eficaz para nuestro modelo**. Esto incluye transformaciones y codificaciones de los datos para representar mejor sus características importantes. Ejemplos:
+]
+
+.pull-left[
+.title-table[Transformación numérica]
+
+```{r, echo=FALSE}
+library(kableExtra)
+
+prop <-  c(691, 639, 969, 955, 508)
+
+total <- sum(prop)
+  
+props <- data.frame(x = prop, x_prop = prop/total) 
+
+props %>%
+  kbl() %>%
+  kable_classic_2(full_width = F)
+```
+]
+
+.pull-right[
+.title-table[Transformación categórica]
+```{r, echo=F}
+
+edades <- data.frame(
+ 'Edad' = c(7, 78, 17, 25, 90), 
+ 'Grupo' = c('Niños', 'Adultos mayores', 'Adolescentes', 'Adultos', 'Adultos mayores'))
+
+edades %>% 
+ kbl() %>%
+  kable_classic_2(full_width = F)
+  
+```
+]
+
 
 ---
 
