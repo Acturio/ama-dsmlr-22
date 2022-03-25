@@ -270,8 +270,8 @@ final_global_regularized_rf_model <- tunning_models_result %>%
   finalize_workflow(best_rf_model) %>%
   parsnip::fit(data = training_data)
 
-saveRDS(final_regularized_rf_model, "models/insurance_rf_model.rds")
-final_regularized_rf_model <- readRDS("models/insurance_rf_model.rds")
+saveRDS(final_regularized_rf_model, "cache/insurance_rf_model.rds")
+final_regularized_rf_model <- readRDS("cache/insurance_rf_model.rds")
 
 ################################################################################
 #### Predictions ####
@@ -286,7 +286,10 @@ predict(
          id = row_number()) %>%
   ggplot(aes(.pred, charges)) +
   geom_point(aes(color = flag)) +
-  geom_abline()
+  geom_abline() +
+  ggtitle("Prediction VS Actual values") +
+  xlab("Predictions") +
+  ylab("Actual Charges")
 
 
 insurance_predictions <- predict(
@@ -299,10 +302,16 @@ insurance_predictions <- predict(
          id = row_number()
   )
 
-insurance_predictions %>%
+prvsact <- insurance_predictions %>%
   ggplot(aes(.pred, charges)) +
   geom_point(color = if_else(insurance_predictions$flag == "red", "red", "blue")) +
-  geom_abline()
+  geom_abline() +
+  ggtitle("Prediction VS Actual values") +
+  xlab("Predictions") +
+  ylab("Actual Charges")
+
+plotly::ggplotly(prvsact)
+
 
 outliers <- insurance_predictions %>%
   filter(charges > 10000, .pred < 20000, flag == "red")
@@ -310,7 +319,8 @@ outliers
 
 insurance_predictions %>%
   ggplot(aes(charges, error)) +
-  geom_point()
+  geom_point() +
+  geom_hline(yintercept = 0, color = "red")
 
 final_regularized_rf_model %>%
   extract_fit_parsnip() %>%
@@ -325,12 +335,12 @@ insurance_predictions %>%
     rsq = cor(.pred, charges)^2
   )
 
-insurance_predictions %>%
-  filter(!id %in% outliers$id) %>%
-  summarise(
-    rmse = sqrt(mean(error^2)),
-    mae = mean(abs(error)),
-    mape = mean(abs(error)/charges),
-    rsq = cor(.pred, charges)^2
-  )
+# insurance_predictions %>%
+#   filter(!id %in% outliers$id) %>%
+#   summarise(
+#     rmse = sqrt(mean(error^2)),
+#     mae = mean(abs(error)),
+#     mape = mean(abs(error)/charges),
+#     rsq = cor(.pred, charges)^2
+#   )
 

@@ -76,9 +76,9 @@ Analiza e interpreta datos a través de una población muestral generando estad�
 
 * **Estadística descriptiva:** Describe distribuciones, análisis exploratorio, correlaciones, outliers, etc.
 
-<br />
-
 * **Estadística inferencial:** Analiza estimaciones puntuales, intervalos de confianza o hipótesis para una población.
+
+* **Estadística predictiva:** Realiza predicciones a partir de un modelo creado con datos distintos a los de predicción.
 
 ]
 
@@ -285,7 +285,7 @@ knitr::include_graphics("img/12_forecasting.jpeg")
 
 * Número futuro de clientes
 * Número esperado de viajes
-* Número por virus (demanda médica/ medicamentos/ etc)
+* Demanda de personal médico/ medicamentos/ materiales 
 * Predicción de uso de recursos 
 ]
 
@@ -746,6 +746,27 @@ class: inverse, center
 <br />
 <br />
 
+.size_text_26px[¿Qué tan bueno o malo es el modelo?]
+
+```{r, echo=FALSE}
+htmltools::tags$iframe(
+    src="pred_vs_actual.html",
+    width="800px", 
+    height="350px",
+    scrolling="no", 
+    seamless="seamless", 
+    frameBorder="0"
+  )
+```
+
+---
+
+background-image: url(img/congreso_1.png)
+class: inverse, center
+
+<br />
+<br />
+
 .size_text_26px[Respuesta Categórica - Regresión Logística]
 
 .body[
@@ -948,3 +969,119 @@ knitr::include_graphics("img/23_2_randomforest.png")
 .body[
 La **agregación** del resultado de múltiples modelos puede en muchas ocasiones **mejorar el desempeño final**, sin embargo, esta mejora **se paga con recursos computacionales.**
 ]
+
+---
+
+background-image: url(img/congreso_1.png)
+class: inverse, center
+
+<br />
+<br />
+
+.size_text_26px[¿Qué tan bueno o malo es el modelo?]
+
+.panelset[
+.panel[.panel-name[Confusion Matrix]
+```{r, echo = F, out.width = "390px", out.height="230px"}
+knitr::include_graphics("img/31_confusion_matrix.png")
+```
+]
+.panel[.panel-name[Accuracy]
+.body[
+* Número de predicciones positivas y negativas realizadas correctamente en relación con el total de predicciones realizadas.
+]
+
+.pull-left[
+```{r, echo = F, out.width = "390px", out.height="230px"}
+knitr::include_graphics("img/31_confusion_matrix.png")
+```
+]
+.pull.right[
+.body[
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
+$$Accuracy = \frac{TP + TN}{TP + TN + FP + FN}$$
+]
+
+]
+]
+
+.panel[.panel-name[Precision]
+.body[
+* De los que elementos clasificados con la etiqueta positiva, cuántos identificamos correctamente. ¿Qué tan eficientes somos en la predicción?
+]
+
+.pull-left[
+```{r, echo = F, out.width = "390px", out.height="230px"}
+knitr::include_graphics("img/31_confusion_matrix.png")
+```
+]
+.pull.right[
+.body[
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
+$$Precision = \frac{TP}{TP + FP}$$
+]
+]
+]
+
+.panel[.panel-name[Recall]
+.body[
+* Conocido como Recall (cobertura) o Sensitivity (Sensibilidad). Del universo posible de nuestra clase positiva, ¿cuántos detectamos o identificamos correctamente?
+]
+
+.pull-left[
+```{r, echo = F, out.width = "390px", out.height="230px"}
+knitr::include_graphics("img/31_confusion_matrix.png")
+```
+]
+.pull.right[
+.body[
+
+<br />
+<br />
+<br />
+<br />
+<br />
+$$Recall = \frac{TP}{TP + FN}$$
+]
+]
+]
+
+.panel[.panel-name[Specificity]
+.body[
+* Es el número de observaciones correctamente identificados como negativos en relación con el total de negativos.
+]
+.pull-left[
+```{r, echo = F, out.width = "390px", out.height="230px"}
+knitr::include_graphics("img/31_confusion_matrix.png")
+```
+]
+.pull.right[
+.body[
+
+<br />
+<br />
+<br />
+<br />
+<br />
+
+$$Specificity = \frac{TN}{TN + FP}$$
+]
+]
+]
+
+]
+
+
+

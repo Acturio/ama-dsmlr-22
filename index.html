@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="" xml:lang="">
   <head>
-    <title>presentation.knit</title>
+    <title>index.knit</title>
     <meta charset="utf-8" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/default.css" rel="stylesheet" />
@@ -65,9 +65,9 @@ Analiza e interpreta datos a través de una población muestral generando estad�
 
 * **Estadística descriptiva:** Describe distribuciones, análisis exploratorio, correlaciones, outliers, etc.
 
-&lt;br /&gt;
-
 * **Estadística inferencial:** Analiza estimaciones puntuales, intervalos de confianza o hipótesis para una población.
+
+* **Estadística predictiva:** Realiza predicciones a partir de un modelo creado con datos distintos a los de predicción.
 
 ]
 
@@ -242,7 +242,7 @@ class: inverse, center
 
 * Número futuro de clientes
 * Número esperado de viajes
-* Número por virus (demanda médica/ medicamentos/ etc)
+* Demanda de personal médico/ medicamentos/ materiales 
 * Predicción de uso de recursos 
 ]
 
@@ -567,6 +567,18 @@ class: inverse, center
 &lt;br /&gt;
 &lt;br /&gt;
 
+.size_text_26px[¿Qué tan bueno o malo es el modelo?]
+
+<iframe src="pred_vs_actual.html" width="800px" height="350px" scrolling="no" seamless="seamless" frameBorder="0"></iframe>
+
+---
+
+background-image: url(img/congreso_1.png)
+class: inverse, center
+
+&lt;br /&gt;
+&lt;br /&gt;
+
 .size_text_26px[Respuesta Categórica - Regresión Logística]
 
 .body[
@@ -664,6 +676,112 @@ El proceso de toma de decisión jerárquica puede mejorarse al considerar el **p
 .body[
 La **agregación** del resultado de múltiples modelos puede en muchas ocasiones **mejorar el desempeño final**, sin embargo, esta mejora **se paga con recursos computacionales.**
 ]
+
+---
+
+background-image: url(img/congreso_1.png)
+class: inverse, center
+
+&lt;br /&gt;
+&lt;br /&gt;
+
+.size_text_26px[¿Qué tan bueno o malo es el modelo?]
+
+.panelset[
+.panel[.panel-name[Confusion Matrix]
+&lt;img src="img/31_confusion_matrix.png" width="390px" height="230px" /&gt;
+]
+.panel[.panel-name[Accuracy]
+.body[
+* Número de predicciones positivas y negativas realizadas correctamente en relación con el total de predicciones realizadas.
+]
+
+.pull-left[
+&lt;img src="img/31_confusion_matrix.png" width="390px" height="230px" /&gt;
+]
+.pull.right[
+.body[
+
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+
+`$$Accuracy = \frac{TP + TN}{TP + TN + FP + FN}$$`
+]
+
+]
+]
+
+.panel[.panel-name[Precision]
+.body[
+* De los que elementos clasificados con la etiqueta positiva, cuántos identificamos correctamente. ¿Qué tan eficientes somos en la predicción?
+]
+
+.pull-left[
+&lt;img src="img/31_confusion_matrix.png" width="390px" height="230px" /&gt;
+]
+.pull.right[
+.body[
+
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+
+`$$Precision = \frac{TP}{TP + FP}$$`
+]
+]
+]
+
+.panel[.panel-name[Recall]
+.body[
+* Conocido como Recall (cobertura) o Sensitivity (Sensibilidad). Del universo posible de nuestra clase positiva, ¿cuántos detectamos o identificamos correctamente?
+]
+
+.pull-left[
+&lt;img src="img/31_confusion_matrix.png" width="390px" height="230px" /&gt;
+]
+.pull.right[
+.body[
+
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+`$$Recall = \frac{TP}{TP + FN}$$`
+]
+]
+]
+
+.panel[.panel-name[Specificity]
+.body[
+* Es el número de observaciones correctamente identificados como negativos en relación con el total de negativos.
+]
+.pull-left[
+&lt;img src="img/31_confusion_matrix.png" width="390px" height="230px" /&gt;
+]
+.pull.right[
+.body[
+
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+&lt;br /&gt;
+
+`$$Specificity = \frac{TN}{TN + FP}$$`
+]
+]
+]
+
+]
+
+
+
     </textarea>
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>

@@ -95,8 +95,7 @@ churn_data %>%
 
 churn_data %>%
   ggplot(aes(x = EstimatedSalary)) +
-  geom_boxplot(fill = "red") +
-  coord_flip() +
+  geom_density(fill = "red") +
   facet_wrap(~Exited) +
   ggtitle("Relación entre churn y número de productos")
 
@@ -120,7 +119,7 @@ feature_eng <- recipe(Exited ~ ., data = training_data) %>%
   update_role(RowNumber, new_role = "ID", old_role = "predictor") %>%
   update_role(CustomerId, new_role = "ID", old_role = "predictor") %>%
   update_role(Surname, new_role = "ID", old_role = "predictor") %>%
-  step_mutate(Exited = as.factor(Exited)) %>%
+  step_mutate(Exited = as.factor(Exited), skip = T) %>%
   step_normalize(all_numeric_predictors()) %>%
   step_dummy(all_nominal_predictors()) %>%
   step_interact(~ NumOfProducts:EstimatedSalary) %>%
@@ -148,7 +147,7 @@ knn_model <- nearest_neighbor(
 
 rforest_model <- rand_forest(
   mode = "classification",
-  trees = 3000,
+  trees = 1000,
   mtry = tune(),
   min_n = tune()) %>%
   set_engine("ranger", importance = "impurity")
@@ -180,7 +179,7 @@ knn_params <- knn_model %>%
   update(
     K = dials::neighbors(c(25, 250)),
     dist_power = dist_power(range = c(1, 5)),
-    weight_func = weight_func(values = c("rectangular", "gaussian", "cos", "euclidian"))
+    weight_func = weight_func(values = c("rectangular", "gaussian", "cos", "triangular"))
   )
 
 rforest_params <- rforest_model %>%
@@ -215,7 +214,7 @@ tunning_models_result <- workflow_tunning_set_models %>%
     fn = "tune_grid",
     seed = 134679,
     resamples = kfcv_data,
-    grid = 50,
+    grid = 30,
     metrics =  metric_set(roc_auc, precision, recall),
     control = grid_ctrl,
     verbose = TRUE
@@ -255,7 +254,7 @@ tunning_models_result %>% autoplot(id = "rec_rf", metric = "roc_auc")
 
 tunning_models_result %>% autoplot(id = "rec_knn", metric = "roc_auc")
 
-tunning_models_result %>% autoplot(id = "rec_lm", metric = "roc_auc")
+tunning_models_result %>% autoplot(id = "rec_log", metric = "roc_auc")
 
 ################################################################################
 
@@ -267,7 +266,7 @@ collect_metrics(tunning_models_result) %>%
 extract_workflow_set_result(tunning_models_result, "rec_rf") %>%
   autoplot(metric = "roc_auc")
 
-autoplot(tunning_models_result, metric = "rmse")
+autoplot(tunning_models_result, metric = "roc_auc")
 
 extract_workflow_set_result(tunning_models_result, "rec_rf") %>%
         show_best(n = 10, metric = "roc_auc")
@@ -275,11 +274,11 @@ extract_workflow_set_result(tunning_models_result, "rec_rf") %>%
 
 best_regularized_rf_model_1se <- tunning_models_result %>%
     extract_workflow_set_result("rec_rf") %>%
-    select_by_one_std_err(metric = "rmse", "rmse")
+    select_by_one_std_err(metric = "roc_auc", "roc_auc")
 
 best_rf_model <- tunning_models_result %>%
  extract_workflow_set_result("rec_rf") %>%
- select_best(metric = "rmse", "rmse")
+ select_best(metric = "roc_auc", "roc_auc")
 
 final_regularized_rf_model <- tunning_models_result %>%
   extract_workflow("rec_rf") %>%
@@ -291,67 +290,55 @@ final_global_regularized_rf_model <- tunning_models_result %>%
   finalize_workflow(best_rf_model) %>%
   parsnip::fit(data = training_data)
 
-saveRDS(final_regularized_rf_model, "models/insurance_rf_model.rds")
-final_regularized_rf_model <- readRDS("models/insurance_rf_model.rds")
+saveRDS(final_regularized_rf_model, "cache/churn_rf_model.rds")
+final_regularized_rf_model <- readRDS("cache/churn_rf_model.rds")
 
 ################################################################################
-#### Predictions ####
-
-predict(
-  final_regularized_rf_model,
-  training_data) %>%
-  dplyr::bind_cols(training_data) %>%
-  mutate(error = .pred - Exited,
-         mape = abs(error)/Exited,
-         flag = if_else(mape > 0.4, "red", "blue"),
-         id = row_number()) %>%
-  ggplot(aes(.pred, Exited)) +
-  geom_point(aes(color = flag)) +
-  geom_abline()
-
-
-insurance_predictions <- predict(
-  final_regularized_rf_model,
-  testing_data) %>%
-  dplyr::bind_cols(testing_data) %>%
-  mutate(error = .pred - Exited,
-         mape = abs(error)/Exited,
-         flag = if_else(mape > 0.4, "red", "blue"),
-         id = row_number()
-  )
-
-insurance_predictions %>%
-  ggplot(aes(.pred, Exited)) +
-  geom_point(color = if_else(insurance_predictions$flag == "red", "red", "blue")) +
-  geom_abline()
-
-outliers <- insurance_predictions %>%
-  filter(Exited > 10000, .pred < 20000, flag == "red")
-outliers
-
-insurance_predictions %>%
-  ggplot(aes(Exited, error)) +
-  geom_point()
+#### Importance of Variables ####
 
 final_regularized_rf_model %>%
   extract_fit_parsnip() %>%
-  vip::vip(num_features = 20L, geom = "col") +
+  vip::vip(num_features = 20L, geom = "point") +
   ggtitle("Importancia de variables")
 
-insurance_predictions %>%
-  summarise(
-    rmse = sqrt(mean(error^2)),
-    mae = mean(abs(error)),
-    mape = mean(abs(error)/Exited),
-    rsq = cor(.pred, Exited)^2
-  )
+#### Predictions ####
 
-insurance_predictions %>%
-  filter(!id %in% outliers$id) %>%
-  summarise(
-    rmse = sqrt(mean(error^2)),
-    mae = mean(abs(error)),
-    mape = mean(abs(error)/Exited),
-    rsq = cor(.pred, Exited)^2
-  )
+predictions <- predict(
+  final_regularized_rf_model,
+  testing_data,
+  type = "prob") %>%
+  dplyr::bind_cols(testing_data) %>%
+  mutate(Exited = as.factor(Exited))
+
+# receiver operating characteristic curve (ROC)
+predictions %>%
+roc_curve(truth = Exited, .pred_1, event_level = "second") %>%
+  autoplot() +
+  ggtitle("Recall VS False Positive Rate") +
+  xlab("False Positive Rate") +
+  ylab("Recall")
+
+predictions %>%
+pr_curve(truth = Exited, .pred_1, event_level = "second") %>%
+  autoplot() +
+  ggtitle("Precision VS Recall Curve") +
+  xlab("Recall") +
+  ylab("Precision")
+
+
+predictions %>%
+  select(id = CustomerId, response = Exited, prob = .pred_1) %>%
+  write.csv("cache/probabilities.csv")
+
+predictions %>%
+  mutate(churn = as.factor(if_else(.pred_1 >= 0.5, 1, 0))) %>%
+  relocate(churn, .after = .pred_1) %>%
+  relocate(Exited, .after = .pred_1) %>%
+  conf_mat(truth = Exited, estimate = churn) %>%
+  autoplot(type = "heatmap") +
+  ggtitle("Confusion Matrix")
+
+
+
+
 
