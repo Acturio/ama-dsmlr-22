@@ -985,6 +985,9 @@ class: inverse, center
 ```{r, echo = F, out.width = "390px", out.height="230px"}
 knitr::include_graphics("img/31_confusion_matrix.png")
 ```
+.body[
+[Shiny App](https://acturio.shinyapps.io/confusion_matrix/)
+]
 ]
 .panel[.panel-name[Accuracy]
 .body[
@@ -1078,6 +1081,18 @@ knitr::include_graphics("img/31_confusion_matrix.png")
 
 $$Specificity = \frac{TN}{TN + FP}$$
 ]
+]
+]
+.panel[.panel-name[Curves]
+.pull-left[
+```{r, echo = F, out.width = "450px", out.height="270px"}
+knitr::include_graphics("img/32_roc_curve.png")
+```
+]
+.pull-right[
+```{r, echo = F, out.width = "450px", out.height="270px"}
+knitr::include_graphics("img/32_pr_curve.png")
+```
 ]
 ]
 
